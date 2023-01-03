@@ -64,6 +64,7 @@ class Heap{
 		}
 
 
+
 };
 
 void heapify(int arr[], int size, int i){ // O(logn)
@@ -71,16 +72,26 @@ void heapify(int arr[], int size, int i){ // O(logn)
 	int leftindex = 2*i;
 	int rightindex = 2*i + 1;
 
-	if(leftindex<size && arr[leftindex]> arr[largest]){
+	if(leftindex <= size && arr[leftindex]> arr[largest]){
 		largest = leftindex;
 	}
-	if(rightindex<size && arr[largest]< arr[rightindex]){
+	if(rightindex <= size && arr[largest]< arr[rightindex]){
 		largest = rightindex;
 	}
 
 	if(largest!=i){
 		swap(arr[largest], arr[i]);
 		heapify(arr, size, largest);
+	}
+}
+
+void HeapSort(int arr[], int n){
+	int size = n;
+	while(size>1){
+		swap(arr[size], arr[1]);
+		size--;
+
+		heapify(arr, size, 1);
 	}
 }
 
@@ -113,6 +124,11 @@ int main(){
 		heapify(arr, n, i);
 	}
 	cout<<"heapify : ";
+	for(int i=1;i<=n;i++){
+		cout<<arr[i]<<" ";
+	}cout<<"\n";
+	cout<<"Sorted : ";
+	HeapSort(arr, n);
 	for(int i=1;i<=n;i++){
 		cout<<arr[i]<<" ";
 	}
