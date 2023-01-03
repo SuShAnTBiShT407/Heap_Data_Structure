@@ -85,6 +85,13 @@ void heapify(int arr[], int size, int i){ // O(logn)
 }
 
 int main(){
+
+	#ifndef ONLINE_JUDGE
+		freopen("input.txt", "r", stdin);
+		freopen("output.txt", "w", stdout);
+	#endif
+
+
 	Heap h;
 	h.insert(81);
 	h.insert(89);
